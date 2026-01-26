@@ -45,7 +45,7 @@ flowchart LR
     A --> QA
     A --> AM
     A --> DOC
-
+```
 
 +--------------------------------------------------+
 |        SOURCE SYSTEMS (Systems of Record)        |
