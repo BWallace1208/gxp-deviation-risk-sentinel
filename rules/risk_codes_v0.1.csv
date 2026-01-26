@@ -1,0 +1,11 @@
+risk_code,description,default_severity
+DR-001,Missing required entry at submit attempt, Critical
+DR-002,Step open exceeds allowed time window,High
+DR-003,Out-of-sequence step attempt,High
+DR-004,Calculation fail flag from DBR, Critical
+DR-005,Required verification missing, Critical
+DR-006,Hold/exception state triggered,High
+DR-007,Session timeout during critical step, Medium
+DR-008,Excessive edits/reversals indicator, Medium
+DR-009,Late entry detected (back-dated signature indicator), Critical
+DR-010, Required attachment/reference missing, Medium
