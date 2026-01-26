@@ -64,8 +64,6 @@ The GxP Deviation Risk Sentinel operates as an external advisory service. It con
 
 This architecture is interoperable and may be implemented on-premises or in a cloud environment. Cloud services referenced in later phases are examples only and do not alter system boundaries or regulatory positioning.
 
-**Flowchart**
-
 '''mermaid
 flowchart LR
     subgraph Source_Systems["Source Systems"]
