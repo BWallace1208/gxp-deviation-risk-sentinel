@@ -47,30 +47,28 @@ flowchart LR
     A --> DOC
 
 
-**Data Flow (ASCII)**
-
-\+--------------------------------------------------+  
- | SOURCE SYSTEMS (Systems of Record) |  
- | |  
- | DBR | MES | IMEX / DOC |  
- | (events) (events) (feeds) |  
- \+-----|------------|--------------|----------------+  
- | | |  
- v v v  
- \+--------------------------------------------------+  
- | GxP DEVIATION RISK SENTINEL (Read-Only) |  
- | |  
- | \[Validate & Filter\] \--\> \[Normalize\] \--\> \[Rules\]|  
- | | | |  
- | v v |  
- | \[Append-Only Audit Log\] \[Advisory Alert\] |  
- \+-------------------------------------|------------+  
- |  
- v  
- \+--------------------------------------------------+  
- | ALERT CONSUMERS |  
- | QA | Area Management | DOC |  
- \+--------------------------------------------------+
++--------------------------------------------------+
+|        SOURCE SYSTEMS (Systems of Record)        |
+|                                                  |
+|   DBR          MES          IMEX / DOC           |
+|   (events)     (events)     (feeds)              |
++-----|------------|--------------|----------------+
+      |            |              |
+      v            v              v
++--------------------------------------------------+
+|     GxP DEVIATION RISK SENTINEL (Read-Only)      |
+|                                                  |
+|   [Validate & Filter] --> [Normalize] --> [Rules]|
+|          |                         |             |
+|          v                         v             |
+|   [Append-Only Audit Log]     [Advisory Alert]   |
++-------------------------------------|------------+
+                                      |
+                                      v
++--------------------------------------------------+
+|                 ALERT CONSUMERS                  |
+|     QA        Area Management        DOC         |
++--------------------------------------------------+
 
 ## **Notes**
 
