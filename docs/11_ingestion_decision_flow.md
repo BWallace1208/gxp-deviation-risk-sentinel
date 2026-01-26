@@ -15,18 +15,19 @@ This document defines the end-to-end decision flow for ingesting metadata events
 ```mermaid
 flowchart TD
 
-    A[Event Received] --> B{Event Schema Valid? \n(allow-list)}
-    B -- No --> R1[REJECT: SCHEMA_INVALID \nLog minimal rejection metadata]
-    B -- Yes --> C{Tripwires Clear? \n(deny-list)}
-    C -- No --> R2[REJECT: PROHIBITED_DATA_DETECTED \nLog minimal rejection metadata]
-    C -- Yes --> D[Normalize Event \n(standard event shape)]
-    D --> E[Evaluate Rules \n(deterministic)]
+    A[Event Received] --> B{Event Schema Valid?<br/>(allow-list)}
+    B -- No --> R1[REJECT: SCHEMA_INVALID<br/>Log minimal rejection metadata]
+    B -- Yes --> C{Tripwires Clear?<br/>(deny-list)}
+    C -- No --> R2[REJECT: PROHIBITED_DATA_DETECTED<br/>Log minimal rejection metadata]
+    C -- Yes --> D[Normalize Event<br/>(standard event shape)]
+    D --> E[Evaluate Rules<br/>(deterministic)]
     E --> F{Rule Match?}
-    F -- No --> N1[NO ALERT \nLog evaluation outcome]
-    F -- Yes --> G[Create Advisory Alert \n(metadata-only)]
-    G --> H[Route Alert \n(DOC/Area Mgmt; QA for High/Critical)]
-    H --> I[Append-only Audit Log \n(alert created + routing)]
+    F -- No --> N1[NO ALERT<br/>Log evaluation outcome]
+    F -- Yes --> G[Create Advisory Alert<br/>(metadata-only)]
+    G --> H[Route Alert<br/>(DOC / Area Mgmt;<br/>QA for High/Critical)]
+    H --> I[Append-only Audit Log<br/>(alert created + routing)]
 ```
+
 [Event Received]
       |
       v
