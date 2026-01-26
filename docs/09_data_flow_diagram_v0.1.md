@@ -5,7 +5,7 @@
 This document describes how meta-data events flow from source systems into the GxP Deviation Risk Sentinel and how advisory alerts flow to consumers. The diagram intentionally avoids APIs, cloud services, databases, ports, or protocols.
 
 **Data Flow (Mermaid)**  
-\`\`\`mermaid  
+```mermaid  
 flowchart LR
 
   subgraph Source\_Systems\["Source Systems (Systems of Record)"\]  
