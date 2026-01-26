@@ -1,0 +1,15 @@
+{
+  "event_id": "EVT-00000004",
+  "source_system": "IMEX_DOC",
+  "event_type": "SIGN_CAPTURED",
+  "event_timestamp": "2026-01-26T20:13:00Z",
+  "site": "SITE-01",
+  "area": "AREA-B",
+  "product_id": "P-014",
+  "dbr_template_id": "MBR-88",
+  "dbr_template_version": "3.2",
+  "step_code": "S-140",
+  "section_code": "SEC-14",
+  "operator_id": "BWALLACE1208",
+  "batch_number": "BN-123456"
+}

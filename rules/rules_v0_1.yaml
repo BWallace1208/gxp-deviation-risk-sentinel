@@ -1,0 +1,165 @@
+ruleset:
+  name: "GxP Deviation Risk Sentinel Rules"
+  version: "0.1"
+  notes:
+    - "Deterministic, metadata-only rules. Advisory alerts only."
+    - "No GMP values stored or processed."
+
+defaults:
+  suppression_window_minutes: 30
+  route_to:
+    - "DOC"
+    - "AREA_MANAGEMENT"
+  route_to_on_high_or_critical:
+    - "QA"
+    - "DOC"
+    - "AREA_MANAGEMENT"
+
+rules:
+
+  - rule_id: "R-001-MISSING_REQUIRED_ENTRY"
+    rule_version: "0.1"
+    enabled: true
+    description: "Submit rejected due to missing required entry."
+    rationale: "Missing required entries can indicate incomplete execution and potential deviation risk."
+    trigger:
+      event_type: "SUBMIT_REJECTED_REQUIRED_MISSING"
+    output:
+      risk_code: "DR-001"
+      severity: "HIGH"
+      recommended_action: "Review step/section for missing required entries and confirm correct completion."
+    routing:
+      consumers:
+        - "DOC"
+        - "AREA_MANAGEMENT"
+        - "QA"
+    suppression:
+      window_minutes: 30
+
+  - rule_id: "R-002-STEP_TIMEOUT"
+    rule_version: "0.1"
+    enabled: true
+    description: "Step remains open beyond threshold."
+    rationale: "Long-open steps can indicate stalled execution or missed entries requiring timely review."
+    trigger:
+      event_type: "STEP_OPENED"
+    correlation:
+      requires: ["batch_token"]
+      pair_with_event_type: "STEP_COMPLETED"
+      time_threshold_minutes: 60
+    output:
+      risk_code: "DR-002"
+      severity: "CRITICAL"
+      recommended_action: "Assess execution status and confirm whether entries/verification are pending."
+    routing:
+      consumers:
+        - "DOC"
+        - "AREA_MANAGEMENT"
+        - "QA"
+    suppression:
+      window_minutes: 60
+
+  - rule_id: "R-003-OUT_OF_SEQUENCE"
+    rule_version: "0.1"
+    enabled: true
+    description: "Out-of-sequence step attempt detected."
+    rationale: "Out-of-sequence behavior may indicate procedural deviation or navigation issues."
+    trigger:
+      event_type: "OUT_OF_SEQUENCE_ATTEMPT"
+    output:
+      risk_code: "DR-003"
+      severity: "MEDIUM"
+      recommended_action: "Verify correct step order and confirm procedural adherence."
+    routing:
+      consumers:
+        - "DOC"
+        - "AREA_MANAGEMENT"
+      qa_escalation:
+        escalate_if_repeats_in_minutes: 60
+        repeat_count_threshold: 2
+        escalation_severity: "HIGH"
+    suppression:
+      window_minutes: 20
+
+  - rule_id: "R-004-CALC_FAIL"
+    rule_version: "0.1"
+    enabled: true
+    description: "Calculation status changed to FAIL (no values)."
+    rationale: "Calc failure is a strong indicator of potential deviation risk and requires QA awareness."
+    trigger:
+      event_type: "CALC_STATUS_CHANGED"
+      conditions:
+        calc_status: "FAIL"
+    output:
+      risk_code: "DR-004"
+      severity: "CRITICAL"
+      recommended_action: "Review calculation failure context and initiate site workflow as appropriate."
+    routing:
+      consumers:
+        - "DOC"
+        - "AREA_MANAGEMENT"
+        - "QA"
+    suppression:
+      window_minutes: 60
+
+  - rule_id: "R-005-MISSING_VERIFICATION"
+    rule_version: "0.1"
+    enabled: true
+    description: "Verification required but missing."
+    rationale: "Missing verification can indicate incomplete oversight for critical steps."
+    trigger:
+      event_type: "VERIFICATION_REQUIRED_MISSING"
+    output:
+      risk_code: "DR-005"
+      severity: "HIGH"
+      recommended_action: "Confirm required verification completion per procedure."
+    routing:
+      consumers:
+        - "DOC"
+        - "AREA_MANAGEMENT"
+        - "QA"
+    suppression:
+      window_minutes: 30
+
+  - rule_id: "R-006-SESSION_TIMEOUT_CRITICAL_STEP"
+    rule_version: "0.1"
+    enabled: true
+    description: "Session timeout during execution."
+    rationale: "Timeouts can interrupt execution flow and contribute to missing entries or delays."
+    trigger:
+      event_type: "SESSION_TIMEOUT"
+    output:
+      risk_code: "DR-007"
+      severity: "MEDIUM"
+      recommended_action: "Confirm execution resumed correctly and no required entries were missed."
+    routing:
+      consumers:
+        - "DOC"
+        - "AREA_MANAGEMENT"
+      qa_escalation:
+        escalate_if_repeats_in_minutes: 60
+        repeat_count_threshold: 3
+        escalation_severity: "HIGH"
+    suppression:
+      window_minutes: 15
+
+  - rule_id: "R-007-HOLD_OR_EXCEPTION"
+    rule_version: "0.1"
+    enabled: true
+    description: "Hold/exception state triggered."
+    rationale: "Holds/exceptions often correlate with events requiring QA and operational awareness."
+    trigger:
+      event_type_any_of:
+        - "HOLD_TRIGGERED"
+        - "EXCEPTION_TRIGGERED"
+    output:
+      risk_code: "DR-006"
+      severity: "HIGH"
+      recommended_action: "Review hold/exception code and follow site workflow for assessment."
+    routing:
+      consumers:
+        - "DOC"
+        - "AREA_MANAGEMENT"
+        - "QA"
+    suppression:
+      window_minutes: 60

@@ -1,0 +1,41 @@
+{
+  "version": "0.1",
+  "prohibited_keys_exact": [
+    "weight", "volume", "temperature", "pressure", "ph", "viscosity", "density",
+    "concentration", "potency", "yield", "specification", "spec_limit",
+    "upper_limit", "lower_limit", "target_value", "actual_value", "measured_value",
+    "setpoint", "material_lot", "lot_number", "batch_number",
+    "operator_id", "employee_id", "signature", "e_signature",
+    "comment", "narrative", "attachment", "image", "file"
+  ],
+  "prohibited_key_patterns_regex_i": [
+    "^temp(erature)?$",
+    "^press(ure)?$",
+    "^wt$|^weight_?",
+    "^vol$|^volume_?",
+    "^(upper|lower)_(spec|limit)$",
+    "^(spec|limit|target|actual|measured|setpoint)",
+    "^(lot|batch|serial)(_?(no|num|number))?$",
+    "^(operator|employee|user)(_?id)?$",
+    "^(comment|notes?|narrative|free_text)$",
+    "^(attach|attachment|file|image|photo)"
+  ],
+  "prohibited_string_patterns_regex_i": [
+    "\\b(mg|g|kg|mcg|mL|L|°C|C|psi|bar|rpm)\\b",
+    "\\b(NLT|NMT)\\b",
+    "(<=|>=|±)",
+    "\\b(LOT|BATCH|BN:)\\b",
+    "\\b(Signed by|E-sign|Signature)\\b"
+  ],
+  "logging_policy": {
+    "log_payload_body_on_reject": false,
+    "log_fields_on_reject": [
+      "rejection_reason_code",
+      "rejection_reason_text",
+      "event_id",
+      "source_system",
+      "event_timestamp",
+      "received_at"
+    ]
+  }
+}

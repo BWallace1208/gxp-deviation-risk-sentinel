@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "alert_schema_v0_1.json",
+  "title": "GxP Deviation Risk Sentinel - Alert Schema v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "alert_id",
+    "created_at",
+    "status",
+    "severity",
+    "risk_code",
+    "source_system",
+    "site",
+    "area",
+    "product_id",
+    "dbr_template_id",
+    "dbr_template_version",
+    "step_code",
+    "section_code",
+    "rule_id",
+    "rule_version"
+  ],
+  "properties": {
+    "alert_id": { "type": "string", "minLength": 8, "maxLength": 128 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["NEW", "ACKNOWLEDGED", "CLOSED"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "risk_code": {
+      "type": "string",
+      "pattern": "^DR-[0-9]{3}$"
+    },
+
+    "source_system": { "type": "string", "enum": ["DBR", "MES", "IMEX_DOC"] },
+    "site": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "area": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "suite": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "line": { "type": "string", "minLength": 1, "maxLength": 64 },
+
+    "product_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "batch_token": { "type": "string", "minLength": 8, "maxLength": 256 },
+
+    "dbr_template_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "dbr_template_version": { "type": "string", "minLength": 1, "maxLength": 32 },
+    "page_number": { "type": "integer", "minimum": 1, "maximum": 5000 },
+    "step_code": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "section_code": { "type": "string", "minLength": 1, "maxLength": 64 },
+
+    "operator_role": { "type": "string", "enum": ["OPERATOR", "VERIFIER", "SUPERVISOR", "QA"] },
+    "operator_token": { "type": "string", "minLength": 8, "maxLength": 256 },
+
+    "rule_id": { "type": "string", "minLength": 3, "maxLength": 64 },
+    "rule_version": { "type": "string", "minLength": 1, "maxLength": 32 },
+
+    "event_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 8, "maxLength": 128 },
+      "description": "IDs of source events that contributed to this alert (metadata only)."
+    },
+
+    "recommended_action": {
+      "type": "string",
+      "maxLength": 240,
+      "description": "Short advisory action statement (no free text batch narrative)."
+    },
+
+    "closure_category": {
+      "type": "string",
+      "enum": [
+        "FALSE_POSITIVE",
+        "ACTION_TAKEN",
+        "ESCALATED",
+        "DUPLICATE_SUPPRESSED",
+        "INFORMATIONAL_ONLY"
+      ],
+      "description": "Controlled reason for alert closure. Advisory only."
+    },
+
+    "closure_notes": {
+      "type": "string",
+      "maxLength": 240,
+      "description": "Short, non-GMP, non-narrative closure note. No values or batch narrative permitted."
+    }
+  }
+}

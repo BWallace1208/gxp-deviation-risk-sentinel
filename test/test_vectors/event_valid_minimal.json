@@ -1,0 +1,16 @@
+{
+  "event_id": "EVT-00000001",
+  "source_system": "DBR",
+  "event_type": "SUBMIT_ATTEMPTED",
+  "event_timestamp": "2026-01-26T20:10:00Z",
+  "site": "SITE-01",
+  "area": "AREA-B",
+  "product_id": "P-014",
+  "dbr_template_id": "MBR-88",
+  "dbr_template_version": "3.2",
+  "step_code": "S-120",
+  "section_code": "SEC-12",
+  "operator_token": "OP-7f91a2c9d1",
+  "operator_role": "OPERATOR",
+  "batch_token": "BT-91c7f0aa21"
+}
