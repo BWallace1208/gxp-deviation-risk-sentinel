@@ -98,5 +98,5 @@ flowchart LR
 
     %% One-way alerts out
     Alerts --> QA
-    Alerts --> AREA MANAGEMENT
+    Alerts --> AM
     Alerts --> DOC
