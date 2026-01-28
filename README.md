@@ -4,6 +4,8 @@
 **Status:** Design-complete MVP (Phases 1–5)  
 **Classification:** Advisory, read-only, metadata-only monitoring system
 
+**Quickstart:** [Quickstart](https://github.com/BWallace1208/gxp-deviation-risk-sentinel/blob/main/docs/QUICKSTART.md)
+
 ## **Overview**
 
 The *GxP Deviation Risk Sentinel* is a vendor-neutral, read-only monitoring system designed to detect potential deviation risk signals from Digital Batch Records (DBR), MES, or document control systems without ingesting or storing GMP data.
