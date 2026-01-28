@@ -1,0 +1,21 @@
+{
+  "event_id": "EVT-TRIPWIRE-0001",
+  "event_timestamp": "2026-01-27T12:00:00Z",
+    "source_system": "DBR",
+  "site": "SITE-01",
+  "area": "AREA-A",
+  "suite": "SUITE-1",
+  "line": "LINE-1",
+  "product_id": "PROD-123",
+  "batch_token": "BT-CCCC-3333",
+  "dbr_template_id": "TMP-001",
+  "dbr_template_version": "1.0",
+  "page_number": 11,
+  "step_code": "STEP-11",
+  "section_code": "SEC-B",
+  "operator_role": "OPERATOR",
+  "operator_token": "OP-XYZ-0002",
+  "event_type": "CALC_STATUS_CHANGED",
+  "calc_status": "FAIL",
+  "gmp_value": "SHOULD_NEVER_BE_HERE"
+}

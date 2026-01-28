@@ -1,0 +1,12 @@
+{
+  "version": "0.1",
+  "allowed_consumers": [
+    "QA",
+    "DOC",
+    "AREA_MGMT"
+  ],
+  "aliases": {
+    "AREA_MANAGEMENT": "AREA_MGMT",
+    "AREA_MANAGERS": "AREA_MGMT"
+  }
+}

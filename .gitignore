@@ -1,0 +1,15 @@
+# Runtime artifacts
+sentinel/storage/*.jsonl
+sentinel/storage/*.json
+sentinel/storage/*state*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / Editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

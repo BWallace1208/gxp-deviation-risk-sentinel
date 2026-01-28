@@ -1,0 +1,23 @@
+{
+  "event_id": "EVT-STEP-OPEN-OVERDUE-001",
+  "event_type": "STEP_OPENED",
+  "event_timestamp": "2026-01-26T06:00:00Z",
+  "source_system": "DBR",
+
+  "site": "SITE-01",
+  "area": "AREA-A",
+  "suite": "SUITE-1",
+  "line": "LINE-1",
+
+  "product_id": "PROD-123",
+  "batch_token": "BT-SWEEP-TEST",
+
+  "dbr_template_id": "TMP-001",
+  "dbr_template_version": "0.1",
+  "page_number": 10,
+  "step_code": "STEP-10",
+  "section_code": "SEC-A",
+
+  "operator_role": "OPERATOR",
+  "operator_token": "OP-TEST-0001"
+}

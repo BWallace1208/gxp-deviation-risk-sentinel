@@ -68,7 +68,7 @@ rules:
       event_type: "OUT_OF_SEQUENCE_ATTEMPT"
     output:
       risk_code: "DR-003"
-      severity: "MEDIUM"
+      severity: "HIGH"
       recommended_action: "Verify correct step order and confirm procedural adherence."
     routing:
       consumers:

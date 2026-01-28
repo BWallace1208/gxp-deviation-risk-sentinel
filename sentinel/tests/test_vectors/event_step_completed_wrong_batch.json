@@ -1,0 +1,19 @@
+{
+  "event_id": "EVT-STEP-COMP-0002",
+  "event_timestamp": "2026-01-27T10:30:00Z",
+  "source_system": "DBR",
+  "site": "SITE-01",
+  "area": "AREA-A",
+  "suite": "SUITE-1",
+  "line": "LINE-1",
+  "product_id": "PROD-123",
+  "batch_token": "BT-BBBB-2222",
+  "dbr_template_id": "TMP-001",
+  "dbr_template_version": "1.0",
+  "page_number": 10,
+  "step_code": "STEP-10",
+  "section_code": "SEC-A",
+  "operator_role": "OPERATOR",
+  "operator_token": "OP-XYZ-0001",
+  "event_type": "STEP_COMPLETED"
+}

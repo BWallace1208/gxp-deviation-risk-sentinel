@@ -1,0 +1,23 @@
+{
+  "version": "0.1",
+  "rule_id": "R-002-STEP_TIMEOUT",
+  "rule_version": "0.1",
+  "enabled": true,
+
+  "threshold_minutes": 60,
+  "pair_with_event_type": "STEP_COMPLETED",
+
+  "output": {
+    "risk_code": "DR-002",
+    "severity": "CRITICAL",
+    "recommended_action": "Assess execution status and confirm whether entries/verification are pending."
+  },
+
+  "routing": {
+    "consumers": ["DOC", "AREA_MANAGEMENT", "QA"]
+  },
+
+  "suppression": {
+    "window_minutes": 60
+  }
+}
